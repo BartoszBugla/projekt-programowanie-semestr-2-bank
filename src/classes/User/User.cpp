@@ -26,6 +26,8 @@ void User::reg()
 {
     int correct{};
     while(correct!=1) {
+        //wywalamy stąd couty
+        //ciny/inputy też
         cout << "podaj mail\n";
         cin >> User::email;
         cout << "podaj haslo\n";
@@ -40,20 +42,27 @@ void User::reg()
         cout << "nazwisko = " << User::secondName << endl;
         cout << "Czy podano prawidlowe dane? 1-tak/2-nie";
         cin>>correct;
+        //jest funkcja input do takich rzeczy
+        //ale i tak trzeba zrobic input number jezeli podajemy liczbe
     }
+    //wywalić do innego pliku ta metoda robi za duzo
 
     fstream plik;
+    //trzymiemie się angielskiego czy nie ?
     plik.open("baza_uzytkownikow.txt", ios::out | ios::app);
     if(plik.is_open())
     {
         plik<<User::email+";"+User::_password+";"+User::name+";"+User::secondName+"\n";
+        //nie jest wczytywane id
         plik.close();
         cout<<"Pomyslnie zarejestrowano uzytkownika";
+        //cout tylko w views
     }
     //ogarnac jak zrobic zeby po zarejestrowaniu cofalo do wyboru ekranu ponownie
 
     else
         cout<<"Nie mozna zarejestrowac uzytkownika, spróbuj ponownie pozniej\n";
+    //to samo
 
 
 
