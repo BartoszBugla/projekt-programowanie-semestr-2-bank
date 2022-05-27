@@ -8,10 +8,11 @@ App::App(){
     View::user = new User();
     View::screen = 1;
     View::user->email = "bartek";
-
     Login loginScreen = Login();
     Dashboard dashboardScreen = Dashboard();
-
+    User uzytkownik;
+    //uzytkownik.reg();
+    //odkomentowac zeby sprawdzic dzialanie rejestracji
      while(true){
          switch(View::screen){
              case 1:

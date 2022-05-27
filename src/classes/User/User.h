@@ -5,6 +5,8 @@
 #ifndef APLIKACJABANKOWA_USER_H
 #define APLIKACJABANKOWA_USER_H
 #include <string>
+#include <iostream>
+#include <fstream>
 using namespace std;
 
 class User {
@@ -16,10 +18,10 @@ public:
     string email;
     string name;
     string secondName;
+    User();
     void login(string email, string login);
     void getMe(const string &email);
-//    void register();
-
+    void reg();//rejestracja
 };
 
 

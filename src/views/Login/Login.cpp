@@ -30,7 +30,7 @@ void Login::render(){
         cerr << "Wpisz poprawne haslo"<<endl;
     }
     View::user->getMe(email);
-    View::screen = 2;
+    View::screen = 4;
 
 
 
