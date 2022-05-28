@@ -11,7 +11,7 @@
 
 class Dashboard: public View {
 public:
-    void render();
+    static void render();
 };
 
 

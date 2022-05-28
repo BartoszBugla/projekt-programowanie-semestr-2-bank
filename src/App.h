@@ -10,6 +10,7 @@
 #include "views/Dashboard/Dashboard.h"
 #include "views/View.h"
 #include "utils/common.h"
+#include "views/Register/Register.h"
 class App {
 public:
     App();

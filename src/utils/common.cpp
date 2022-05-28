@@ -24,7 +24,7 @@ void Clear()
 #endif
 }
 string input(){
-    string userInput = "";
+    string userInput;
     getline(cin >> ws, userInput);
     return userInput;
 }

@@ -8,11 +8,7 @@ App::App(){
     //inicjalizja globalnych zmiennych w sumie można to gdzieś przenieść
     //co myślicie?
     View::user = new User();
-    View::screen = login;
-    Login loginScreen = Login();
-    Dashboard dashboardScreen = Dashboard();
-
-    User uzytkownik;
+    View::screen = reg;
 //    uzytkownik.reg();
     //odkomentowac zeby sprawdzic dzialanie rejestracji
     //Starajmy się tu trzymać jak najmniej używania czegokolwiek
@@ -24,10 +20,13 @@ App::App(){
      while(true){
          switch(View::screen){
              case Screen::login:
-                 loginScreen.render();
+                 Login::render();
                 continue;
              case Screen::dashboard:
-                 dashboardScreen.render();
+                 Dashboard::render();
+                 continue;
+             case Screen::reg:
+                 Register::render();
                  continue;
              case Screen::leave:
                  //exit

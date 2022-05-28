@@ -20,7 +20,6 @@ public:
     static User* user;
     static Screen screen;
     template<typename t> static void setScreen(t go){
-        Clear();
         screen = static_cast<Screen>(go);
     }
 };

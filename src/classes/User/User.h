@@ -21,7 +21,13 @@ public:
     User();
     void login(string email, string login);
     void getMe(const string &email);
-    void reg();//rejestracja
+    bool reg();//rejestracja
+    void setPassword(string pass){
+        _password=pass;
+    }
+    string getPassword(){
+       return  _password;
+    }
 };
 
 

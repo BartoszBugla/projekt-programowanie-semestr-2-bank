@@ -10,7 +10,7 @@ using namespace std;
 
 class Login:public View{
 public:
-    void render();
+    static void render();
 };
 
 
