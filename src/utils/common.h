@@ -14,5 +14,6 @@ void Clear();
 int random(int a, int b );
 void wait(int milliseconds );
 string input();
+int inputNum();
 #endif //APLIKACJABANKOWA_COMMON_H
 

@@ -7,11 +7,22 @@
 
 #include "../classes/User/User.h"
 #include "../utils/common.h"
+
+enum Screen{
+    login = 1,
+    dashboard,
+    reg,
+    leave,
+};
 class View {
 
 public:
     static User* user;
-    static int screen;
+    static Screen screen;
+    template<typename t> static void setScreen(t go){
+        Clear();
+        screen = static_cast<Screen>(go);
+    }
 };
 
 

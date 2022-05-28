@@ -5,4 +5,4 @@
 #include "View.h"
 
 User* View::user;
-int View::screen;
+Screen View::screen;

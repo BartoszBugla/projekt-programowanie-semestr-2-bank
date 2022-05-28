@@ -15,7 +15,7 @@ void Login::render(){
     cout << "\x1b[32;47m Siema wpisz swoje dane aby kontynuwować \x1b[0m "<<endl;
     while(true){
         cout << "Podaj email: ";
-         email = input();
+        email = input();
         // z bazy danych
         // trzeba zrobić walidacja najpierw znaleśc w plikach czy jest taki email
         if(email == "bartek") break  ;
@@ -23,14 +23,15 @@ void Login::render(){
     }
     while(true){
         cout << "Podaj haslo: ";
-         password = input();
+        password = input();
         //a potem czy ten email ma takie haslo
         //to sa dane testowe
         if(password == "123")  break ;
-        cerr << "Wpisz poprawne haslo"<<endl;
+        cout << "Wpisz poprawne haslo"<<endl;
     }
-    View::user->getMe(email);
-    View::screen = 4;
+
+    user->getMe(email);
+    setScreen(Screen::dashboard);
 
 
 

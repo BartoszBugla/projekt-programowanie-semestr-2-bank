@@ -28,3 +28,17 @@ string input(){
     getline(cin >> ws, userInput);
     return userInput;
 }
+int inputNum(){
+    string userInput;
+    getline(cin>>ws, userInput);
+    if(userInput.length() == 0){
+            string message = "Trzeba coś wpisac";
+            throw message;
+        }
+    for(char i : userInput)
+        if(i < '0' || i > '9'){
+            string message = "Nie podales liczby";
+            throw message;
+    }
+    return stoi(userInput);
+}

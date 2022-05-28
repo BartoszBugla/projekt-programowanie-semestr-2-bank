@@ -8,12 +8,12 @@ App::App(){
     //inicjalizja globalnych zmiennych w sumie można to gdzieś przenieść
     //co myślicie?
     View::user = new User();
-    View::screen = 1;
+    View::screen = login;
     Login loginScreen = Login();
     Dashboard dashboardScreen = Dashboard();
 
     User uzytkownik;
-    //uzytkownik.reg();
+//    uzytkownik.reg();
     //odkomentowac zeby sprawdzic dzialanie rejestracji
     //Starajmy się tu trzymać jak najmniej używania czegokolwiek
     //logiki itd najlepiej tu trzymać tylko poszczególne widoki
@@ -23,19 +23,32 @@ App::App(){
 
      while(true){
          switch(View::screen){
-             case 1:
+             case Screen::login:
                  loginScreen.render();
                 continue;
-             case 2:
+             case Screen::dashboard:
                  dashboardScreen.render();
                  continue;
-             case 3:
+             case Screen::leave:
                  //exit
                  break;
              default:
                  cout<<"podaj ekran na który chcesz przejść 404"<<endl;
                  //jak sie poda stringa to sie wypieroli trzeba to potem zabezpieczyć
-                  View::screen = stoi(input())
+                 int correct =false;
+                 while(!correct){
+                     try{
+                         int nextScreen = inputNum();
+                         View::setScreen<int>(nextScreen);
+                         correct = true;
+                     }catch(string err){
+                         correct=false;
+                         cout<<err<<endl;
+                     }
+                 }
+
+
+
                  continue;
          }
          break;
