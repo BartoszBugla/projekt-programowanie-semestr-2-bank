@@ -8,10 +8,14 @@ using namespace std;
 
 
 class blik {
-public:
+private:
     int blik_number;
+public:
     blik();
-    void generate_blik();
+
+    int generate_blik();
+
+    int getBlik();
 };
 
 

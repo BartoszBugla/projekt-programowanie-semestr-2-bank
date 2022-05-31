@@ -8,10 +8,19 @@
 
 #include "../View.h"
 #include "../../utils/common.h"
+#include <string>
+#include "../../classes/blik.h"
 
-class Dashboard: public View {
+class Dashboard : public View {
 public:
-    static void render();
+    blik blikCode = blik();
+    string errorMessage;
+
+    void render();
+
+    void show();
+
+    void setMappedScreen(int);
 };
 
 
