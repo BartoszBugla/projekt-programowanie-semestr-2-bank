@@ -11,7 +11,9 @@ using namespace std;
 class Login:public View{
 public:
     static void render();
+
 };
+
 
 
 #endif //APLIKACJABANKOWA_LOGIN_H

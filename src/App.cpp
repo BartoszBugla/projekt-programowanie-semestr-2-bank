@@ -8,8 +8,10 @@ App::App(){
     //inicjalizja globalnych zmiennych w sumie można to gdzieś przenieść
     //co myślicie?
     View::user = new User();
-    View::screen = reg;
-//    uzytkownik.reg();
+    //View::screen = reg;
+  // Login::render();
+  // Register::render();
+   // uzytkownik.reg();
     //odkomentowac zeby sprawdzic dzialanie rejestracji
     //Starajmy się tu trzymać jak najmniej używania czegokolwiek
     //logiki itd najlepiej tu trzymać tylko poszczególne widoki

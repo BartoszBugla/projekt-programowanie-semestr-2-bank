@@ -19,7 +19,7 @@ public:
     string name;
     string secondName;
     User();
-    void login(string email, string login);
+    bool login(string email, string login);
     void getMe(const string &email);
     bool reg();//rejestracja
     void setPassword(string pass){

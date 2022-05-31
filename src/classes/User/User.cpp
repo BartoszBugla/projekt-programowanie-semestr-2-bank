@@ -8,7 +8,25 @@ User::User()
 {
 
 };
-void User::login(string email, string password){
+bool User::login(string emailCheck, string passwordCheck){
+    fstream file;
+    char wybor;
+    bool y=false;
+
+    file.open("baza_uzytkownikow.txt", ios::in);
+    if(file.is_open())
+    {
+            while (!file.eof()) {
+                file >> email >> _password >> name >> secondName;
+                if (emailCheck == email && passwordCheck == _password) {
+                    return true;
+                }
+            }
+            if (y == false) {
+                cout << "Dane sa nieprawidlowe. Sprobuj ponownie." << endl;
+            }
+        file.close();
+    }
 
 };
 void User::getMe(const string &byEmail){
@@ -28,7 +46,7 @@ bool User::reg()
     file.open("baza_uzytkownikow.txt", ios::out | ios::app);
     if(file.is_open())
     {
-        file<<email+";"+_password+";"+name+";"+secondName+"\n";
+        file<<email+" "+_password+" "+name+" "+secondName+"\n";
         file.close();
         return true;
     }
