@@ -2,3 +2,5 @@ bartek@gmail;123;bartek;bugla
 bartek;123;bartek;bugla
 123;123;123;123
 123;123;123;123
+bartek 123 bartek bugla
+ela 123 ela tkocz

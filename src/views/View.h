@@ -8,18 +8,22 @@
 #include "../classes/User/User.h"
 #include "../utils/common.h"
 
-enum Screen{
+enum Screen {
     login = 1,
     dashboard,
     reg,
     leave,
+    profile,
 };
+
 class View {
 
 public:
-    static User* user;
+    static User *user;
     static Screen screen;
-    template<typename t> static void setScreen(t go){
+
+    template<typename t>
+    static void setScreen(t go) {
         screen = static_cast<Screen>(go);
     }
 };

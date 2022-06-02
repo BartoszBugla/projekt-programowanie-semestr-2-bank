@@ -5,13 +5,11 @@
 #include "App.h"
 
 App::App() {
-    //inicjalizja globalnych zmiennych w sumie można to gdzieś przenieść
-    //co myślicie?
     View::user = new User();
-    View::screen = dashboard;
-    
-    Dashboard dashboardScreen = Dashboard();
+    View::screen = login;
 
+    Dashboard dashboardScreen = Dashboard();
+    Profile profileScreen = Profile();
     while (true) {
         switch (View::screen) {
             case Screen::login:
@@ -22,6 +20,9 @@ App::App() {
                 continue;
             case Screen::reg:
                 Register::render();
+                continue;
+            case Screen::profile:
+                profileScreen.render();
                 continue;
             case Screen::leave:
                 //exit

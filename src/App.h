@@ -11,6 +11,8 @@
 #include "views/View.h"
 #include "utils/common.h"
 #include "views/Register/Register.h"
+#include "views/Profile/Profile.h"
+
 class App {
 public:
     App();

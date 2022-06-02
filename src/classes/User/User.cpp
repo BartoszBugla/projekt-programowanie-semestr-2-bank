@@ -4,57 +4,59 @@
 
 #include "User.h"
 
-User::User()
-{
+User::User() {
 
 };
-bool User::login(string emailCheck, string passwordCheck){
+
+bool User::login(string emailCheck, string passwordCheck) {
     fstream file;
     char wybor;
-    bool y=false;
+    bool y = false;
 
     file.open("baza_uzytkownikow.txt", ios::in);
-    if(file.is_open())
-    {
-            while (!file.eof()) {
-                file >> email >> _password >> name >> secondName;
-                if (emailCheck == email && passwordCheck == _password) {
-                    return true;
-                }
+    if (file.is_open()) {
+        while (!file.eof()) {
+            file >> email >> _password >> name >> secondName;
+            if (emailCheck == email && passwordCheck == _password) {
+                return true;
             }
-            if (y == false) {
-                cout << "Dane sa nieprawidlowe. Sprobuj ponownie." << endl;
-            }
+        }
+        if (y == false) {
+            cout << "Dane sa nieprawidlowe. Sprobuj ponownie." << endl;
+        }
         file.close();
     }
 
 };
-void User::getMe(const string &byEmail){
-    if(byEmail == "bartek"){
-        //załadowanie z bazy danych
-        this->email = "bartek";
-        this->_password = "123";
-        this->name = "bartek";
-        this->secondName="Bugla";
-        this->_id = 50;
+
+//get user by email
+void User::getMe(const string &byEmail) {
+    string line;
+    fstream file;
+    file.open("baza_uzytkownikow.txt", ios::in);
+    if (file.is_open()) {
+        while (getline(file, line)) {
+            string *arrayOfStrings = splitString(line, " ", 5);
+            if (arrayOfStrings[0] == byEmail) {
+                this->email = arrayOfStrings[0];
+                this->_password = arrayOfStrings[1];
+                this->name = arrayOfStrings[2];
+                this->secondName = arrayOfStrings[3];
+            }
+
+        }
+
     }
 
 }
-bool User::reg()
-{
+
+bool User::reg() {
     fstream file;
     file.open("baza_uzytkownikow.txt", ios::out | ios::app);
-    if(file.is_open())
-    {
-        file<<email+" "+_password+" "+name+" "+secondName+"\n";
+    if (file.is_open()) {
+        file << email + " " + _password + " " + name + " " + secondName + "\n";
         file.close();
         return true;
-    }
-    else
+    } else
         return false;
-
-
-
-
-
 }

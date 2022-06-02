@@ -12,7 +12,7 @@ void Dashboard::setMappedScreen(int num) {
             setScreen(dashboard);
             return;
         case 2:
-            setScreen(dashboard);
+            setScreen(profile);
             return;
         case 3:
             setScreen(dashboard);
@@ -46,7 +46,10 @@ void Dashboard::show() {
 
 void Dashboard::render() {
     //robocze te getme
-    user->getMe("bartek");
+    if (user->email == "") {
+        user->getMe("bartek");
+    }
+
     blikCode.generate_blik();
     Dashboard::show();
     //
@@ -59,12 +62,14 @@ void Dashboard::render() {
             string e = "Wpisz poprawną liczbę";
             throw e;
         }
-        errorMessage = "";
 
+        errorMessage = "";
         setMappedScreen(choice);
+
     } catch (const string &err) {
         errorMessage = err;
         show();
+        // nie przekieruje na 404
         setScreen(dashboard);
     }
     // clean

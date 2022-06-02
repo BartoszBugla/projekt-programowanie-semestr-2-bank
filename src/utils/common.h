@@ -35,5 +35,7 @@ enum Color {
 
 string color(const string &, Color);
 
+string *splitString(string s, const string &delimiter, int len);
+
 #endif //APLIKACJABANKOWA_COMMON_H
 
