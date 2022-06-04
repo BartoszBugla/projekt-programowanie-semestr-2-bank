@@ -6,7 +6,7 @@
 
 
 void Dashboard::setMappedScreen(int num) {
-    //Todo dobrze to zrobic
+
     switch (num) {
         case 1:
             setScreen(dashboard);
@@ -15,7 +15,7 @@ void Dashboard::setMappedScreen(int num) {
             setScreen(profile);
             return;
         case 3:
-            setScreen(dashboard);
+            setScreen(createTransferScreen);
             return;
         case 4:
             setScreen(leave);
@@ -31,7 +31,7 @@ void Dashboard::show() {
     for (int i = 0; i < 40; i++) cout << color("*", Color::magenta);
     cout << endl;
     cout << "Cześć " << color(View::user->name, Color::red) << " ";
-    cout << "Twoje Saldo to" << endl;
+    cout << "Twoje Saldo to: " << View::user->balance << endl;
     cout << "Twój kod blik to " << color(to_string(blikCode.getBlik()), Color::blue) << endl;
     for (int i = 0; i < 40; i++) cout << color("*", Color::magenta);
     cout << endl;
@@ -58,11 +58,17 @@ void Dashboard::render() {
 
     try {
         choice = inputNum();
-        if (choice > 5 || choice < 1) {
+        if (choice == 5) {
+            View::user->balance += 500;
+        }
+        if (choice > 4 || choice < 1) {
             string e = "Wpisz poprawną liczbę";
             throw e;
         }
-
+        if (choice == 3 && View::user->balance <= 0) {
+            string e = "jestes bankrut :(";
+            throw e;
+        }
         errorMessage = "";
         setMappedScreen(choice);
 

@@ -60,3 +60,30 @@ bool User::reg() {
     } else
         return false;
 }
+
+User *User::findUserByEmail(const string &byEmail) {
+    string line;
+    fstream file;
+    User *newUser = new User();
+    file.open("baza_uzytkownikow.txt", ios::in);
+    if (file.is_open()) {
+        while (getline(file, line)) {
+            string *arrayOfStrings = splitString(line, " ", 5);
+            if (arrayOfStrings[0] == byEmail) {
+                newUser->email = arrayOfStrings[0];
+                newUser->_password = arrayOfStrings[1];
+                newUser->name = arrayOfStrings[2];
+                newUser->secondName = arrayOfStrings[3];
+            }
+
+        }
+        if (newUser->email.empty()) {
+            string code = "NOT_FOUND";
+            throw code;
+        }
+        return newUser;
+    } else {
+        string code = "FILE_NOT_OPENED";
+        throw code;
+    }
+};

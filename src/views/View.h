@@ -14,6 +14,7 @@ enum Screen {
     reg,
     leave,
     profile,
+    createTransferScreen,
 };
 
 class View {

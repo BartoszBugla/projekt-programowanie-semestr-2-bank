@@ -13,14 +13,19 @@
 using namespace std;
 
 class User {
+
+
 private:
     int _id;
     string _password;
 public:
+    static User *findUserByEmail(const string &email);
+
     //Trasnfer transfers;
     string email;
     string name;
     string secondName;
+    float balance = 0;
 
     User();
 

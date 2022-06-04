@@ -4,23 +4,23 @@
 
 #include "Login.h"
 
-void Login::render(){
+void Login::render() {
     //kolory robimy w ten sposób
     //https://stackoverflow.com/questions/33309136/change-color-in-os-x-console-output
     //bo to dziala i na macu i windows (przynajmnije powinno XD)
-    bool x=false;
+    bool x = false;
     //Przydałaby się dynamiczna tablica
     Clear();
     //string daneEmail[200],danePassword[200],daneImie[200],daneNazwisko[200];
     string email = "";
-    string password= "";
+    string password = "";
     User logowanie;
     do {
         cout << "Podaj email: ";
         email = input();
         cout << "Podaj haslo: ";
         password = input();
-    }while(logowanie.login(email,password)==false);
-    user->getMe(email);
+    } while (logowanie.login(email, password) == false);
+    user = User::findUserByEmail(email);
     setScreen(Screen::dashboard);
 }

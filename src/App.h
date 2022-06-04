@@ -12,6 +12,8 @@
 #include "utils/common.h"
 #include "views/Register/Register.h"
 #include "views/Profile/Profile.h"
+#include "classes/Transfer/Transfer.h"
+#include "views/CreateTransfer/CreateTransfer.h"
 
 class App {
 public:

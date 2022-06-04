@@ -10,8 +10,13 @@ App::App() {
 
     Dashboard dashboardScreen = Dashboard();
     Profile profileScreen = Profile();
+    CreateTransfer createTransferScreen = CreateTransfer();
+
     while (true) {
         switch (View::screen) {
+            case Screen::createTransferScreen:
+                createTransferScreen.render();
+                continue;
             case Screen::login:
                 Login::render();
                 continue;
