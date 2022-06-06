@@ -50,11 +50,31 @@ void User::getMe(const string &byEmail) {
 
 }
 
+void User::setid()
+{
+    int lines{};
+    string line;
+    fstream file;
+    file.open("baza_uzytkownikow.txt", ios::in);
+    if(file.is_open()){
+        while(getline(file,line))
+            ++lines;
+        file.close();
+    }
+    else {
+        string code = "FILE_NOT_OPENED";
+        throw code;
+    }
+    _id=lines+1;
+
+}
+
 bool User::reg() {
     fstream file;
     file.open("baza_uzytkownikow.txt", ios::out | ios::app);
     if (file.is_open()) {
-        file << email + " " + _password + " " + name + " " + secondName + "\n";
+        file <<_id;
+        file <<" " + email + " " + _password + " " + name + " " + secondName + "\n";
         file.close();
         return true;
     } else

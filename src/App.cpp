@@ -6,8 +6,7 @@
 
 App::App() {
     View::user = new User();
-    View::screen = login;
-
+    View::screen = reg;
     Dashboard dashboardScreen = Dashboard();
     Profile profileScreen = Profile();
     CreateTransfer createTransferScreen = CreateTransfer();

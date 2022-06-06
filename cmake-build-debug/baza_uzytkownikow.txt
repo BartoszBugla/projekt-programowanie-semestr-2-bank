@@ -1,6 +1,3 @@
-bartek@gmail;123;bartek;bugla
-bartek;123;bartek;bugla
-123;123;123;123
-123;123;123;123
-bartek 123 bartek bugla
-ela 123 ela tkocz
+1 bartek 123 bartek bugla
+2 michal 123 michal bober
+3 kamil 123 kamil grabowski

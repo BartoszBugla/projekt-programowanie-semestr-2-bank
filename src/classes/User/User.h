@@ -33,6 +33,11 @@ public:
 
     void getMe(const string &email);
 
+    void setid();
+    int getid()
+    {
+        return _id;
+    }
     bool reg();//rejestracja
     void setPassword(string pass) {
         _password = pass;

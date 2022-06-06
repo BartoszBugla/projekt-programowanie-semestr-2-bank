@@ -17,6 +17,7 @@ void Register::render() {
         newUser->name = input();
         cout << "podaj nazwisko\n";
         newUser->secondName = input();
+        newUser->setid();
         cout << "email = " << newUser->email << endl;
         cout << "haslo = " <<newUser->getPassword() << endl;
         cout << "imie = " << newUser->name << endl;
