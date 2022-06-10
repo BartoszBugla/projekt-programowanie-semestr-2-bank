@@ -1,2 +1,6 @@
-1 bartek 123 bartek b 300.000000
-2 boczek 123 123 123 200.000000
+1 bartek 123 bartek bugla
+2 michal 123 michal bober
+3 kamil 123 kamil grabowski
+4 1 1 1 1
+5 mail haslo imie nazwisko
+6 mail haslo michal bober

@@ -21,6 +21,13 @@ void Login::render() {
         cout << "Podaj haslo: ";
         password = input();
     } while (logowanie.login(email, password) == false);
-    user = User::findUserByEmail(email);
-    setScreen(Screen::dashboard);
+    if(email=="admin" && password=="admin")
+    {
+        setScreen(Screen::AdminDashboard);
+    }
+    else
+    {
+        user = User::findUserByEmail(email);
+        setScreen(Screen::dashboard);
+    }
 }

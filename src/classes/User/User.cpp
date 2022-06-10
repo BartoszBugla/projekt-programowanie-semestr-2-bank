@@ -12,40 +12,65 @@ bool User::login(string emailCheck, string passwordCheck) {
     fstream file;
     char wybor;
     bool y = false;
-
-    file.open("baza_uzytkownikow.txt", ios::in);
-    if (file.is_open()) {
-        while (!file.eof()) {
-            file >> _id >> email >> _password >> name >> secondName;
-            if (emailCheck == email && passwordCheck == _password) {
-                return true;
+    if(emailCheck=="admin" && passwordCheck=="admin")
+    {
+        return true;
+    }
+    else{
+        file.open("baza_uzytkownikow.txt", ios::in);
+        if (file.is_open()) {
+            while (!file.eof()) {
+                file >> _id >> email >> _password >> name >> secondName;
+                if (emailCheck == email && passwordCheck == _password) {
+                    return true;
+                }
             }
+            if (y == false) {
+                cout << "Dane sa nieprawidlowe. Sprobuj ponownie." << endl;
+            }
+            file.close();
         }
-        if (y == false) {
-            cout << "Dane sa nieprawidlowe. Sprobuj ponownie." << endl;
-        }
-        file.close();
     }
 
 };
 
-void User::setid() {
+//get user by email
+void User::getMe(const string &byEmail) {
+    string line;
+    fstream file;
+    file.open("baza_uzytkownikow.txt", ios::in);
+    if (file.is_open()) {
+        while (getline(file, line)) {
+            string *arrayOfStrings = splitString(line, " ", 5);
+            if (arrayOfStrings[0] == byEmail) {
+                this->email = arrayOfStrings[0];
+                this->_password = arrayOfStrings[1];
+                this->name = arrayOfStrings[2];
+                this->secondName = arrayOfStrings[3];
+            }
+
+        }
+
+    }
+
+}
+
+void User::setid()
+{
     int lines{};
     string line;
     fstream file;
-    file.open("baza_uzytkownikow.txt", ios::out | ios::in);
-
-    if (file.is_open()) {
-
-        while (getline(file, line))
+    file.open("baza_uzytkownikow.txt", ios::in);
+    if(file.is_open()){
+        while(getline(file,line))
             ++lines;
         file.close();
-    } else {
+    }
+    else {
         string code = "FILE_NOT_OPENED";
         throw code;
     }
-
-    _id = lines + 1;
+    _id=lines+1;
 
 }
 
@@ -53,8 +78,8 @@ bool User::reg() {
     fstream file;
     file.open("baza_uzytkownikow.txt", ios::out | ios::app);
     if (file.is_open()) {
-        file << _id;
-        file << " " + email + " " + _password + " " + name + " " + secondName + "\n";
+        file <<_id;
+        file <<" " + email + " " + _password + " " + name + " " + secondName + "\n";
         file.close();
         return true;
     } else
@@ -69,12 +94,11 @@ User *User::findUserByEmail(const string &byEmail) {
     if (file.is_open()) {
         while (getline(file, line)) {
             string *arrayOfStrings = splitString(line, " ", 5);
-            if (arrayOfStrings[1] == byEmail) {
-                newUser->_id = stoi(arrayOfStrings[0]);
-                newUser->email = arrayOfStrings[1];
-                newUser->_password = arrayOfStrings[2];
-                newUser->name = arrayOfStrings[3];
-                newUser->secondName = arrayOfStrings[4];
+            if (arrayOfStrings[0] == byEmail) {
+                newUser->email = arrayOfStrings[0];
+                newUser->_password = arrayOfStrings[1];
+                newUser->name = arrayOfStrings[2];
+                newUser->secondName = arrayOfStrings[3];
             }
 
         }
@@ -88,37 +112,3 @@ User *User::findUserByEmail(const string &byEmail) {
         throw code;
     }
 };
-
-bool User::save() {
-
-    fstream file("baza_uzytkownikow.txt");
-    string line;
-    ofstream newFile("temp.txt");
-    string strTemp;
-    string newFileString;
-
-    if (file.is_open()) {
-        while (getline(file, line)) {
-            string *arrayOfStrings = splitString(line, " ", 1000);
-            if (stoi(arrayOfStrings[0]) == _id) {
-                line = to_string(_id) + " "
-                       + email + " "
-                       + _password + " " +
-                       name + " "
-                       + secondName + " " +
-                       to_string(balance) + "\n";
-                newFileString += line;
-            } else {
-                newFileString += line + "\n";
-            }
-        }
-        newFile << newFileString;
-        file.close();
-        remove("baza_uzytkownikow.txt");
-        rename("temp.txt", "baza_uzytkownikow.txt");
-        newFile.close();
-        return true;
-    } else
-        return false;
-
-}
