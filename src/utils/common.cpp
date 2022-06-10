@@ -18,13 +18,7 @@ void wait(int milliseconds) {
 }
 
 void Clear() {
-#if defined _WIN32
     system("cls");
-#elif defined (__LINUX__) || defined(__gnu_linux__) || defined(__linux__)
-    system("clear");
-#elif defined (__APPLE__)
-    system("clear");
-#endif
 }
 
 string input() {
@@ -64,6 +58,5 @@ string *splitString(string s, const string &delimiter, int len) {
         i++;
         s.erase(0, pos + delimiter.length());
     }
-
     return array;
 }

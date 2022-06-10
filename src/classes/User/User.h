@@ -8,6 +8,7 @@
 #include <string>
 #include <iostream>
 #include <fstream>
+#include <ctime>
 #include "../../utils/common.h"
 
 using namespace std;

@@ -35,6 +35,34 @@ void adminDashboard::userData()
 
 void adminDashboard::transferData()
 {
+    fstream file;
+    int id;
+    string line;
+    float value,balanceBefore,balanceAfter;
+    string from,to,msg,date;
+    file.open("Transfers.txt",ios::in);
+    if(file.is_open())
+    {
+        while(getline(file,line))
+        {
+            //bartek prosze spojrz o co chodzi
+            string *arrayOfStrings = splitString(line, ";", 7);
+            id=stoi(arrayOfStrings[0]);
+            from=arrayOfStrings[1];
+            to=arrayOfStrings[2];
+            value=stof(arrayOfStrings[3]);
+            balanceBefore=stof(arrayOfStrings[4]);
+            balanceAfter=stof(arrayOfStrings[5]);
+            date=arrayOfStrings[6];
+            cout<<"id: "<<id<<", od: "<<from<<", do: "<<to
+                <<", opis: "<<msg<<", kwota: "<<value<<", saldo przed: "<<balanceBefore
+                <<", saldo po: "<<balanceAfter<<", data: "<<date<<endl;
+        }
+        file.close();
+    }
+    else{
+        cout<<"Nie udalo sie wczytac listy uzytkownikow"<<endl;
+    }
     Clear();
     int num;
     cout<<"1 aby wyjsc do poprzedniego ekranu"<<endl;

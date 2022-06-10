@@ -14,8 +14,8 @@ private:
     string from;
     string to;
     string msg;
-    //? nie wiem w sumie jak datę ogarnąc narazie
-    string CreatedAt;
+    time_t now = time(0);
+    string CreatedAt = ctime(&now);
     float balanceBefore;
     float balanceAfter;
     int _id;
@@ -67,10 +67,9 @@ public:
         file.open("Transfers.txt", ios::out | ios::app);
         transfer.generateID();
         if (file.is_open()) {
-            file << transfer._id << " "
-                 << user.email + " " + transfer.to + " " + transfer.msg + " " + to_string(transfer.value);
-            file << +" " + transfer.CreatedAt << user.balance << " " << user.balance - transfer.value
-                 << "\n";
+            file << transfer._id << ";"
+                 << user.email + ";" + transfer.to + ";" + transfer.msg + ";" + to_string(transfer.value);
+            file << +";"<<user.balance << ";" << user.balance - transfer.value<<+";"+ transfer.CreatedAt;
             file.close();
             user.balance -= transfer.value;
 //            user.save();

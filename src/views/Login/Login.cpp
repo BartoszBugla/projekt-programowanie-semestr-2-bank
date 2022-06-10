@@ -22,10 +22,10 @@ void Login::render() {
         password = input();
     } while (!logowanie.login(email, password));
 
-//    if (email == "admin" && password == "admin") {
-//        setScreen(Screen::AdmbinDashboard);
-//    } else {
+    if (email == "admin" && password == "admin") {
+       setScreen(Screen::AdminDashboard);
+    } else {
     user = User::findUserByEmail(email);
     setScreen(Screen::dashboard);
-//    }
+   }
 }
