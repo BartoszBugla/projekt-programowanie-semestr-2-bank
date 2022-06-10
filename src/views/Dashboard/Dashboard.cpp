@@ -46,9 +46,9 @@ void Dashboard::show() {
 
 void Dashboard::render() {
     //robocze te getme
-    if (user->email == "") {
-        user->getMe("bartek");
-    }
+//    if (user->email == "") {
+//        user->getMe("bartek");
+//    }
 
     blikCode.generate_blik();
     Dashboard::show();

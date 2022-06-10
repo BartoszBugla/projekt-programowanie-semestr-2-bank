@@ -31,17 +31,18 @@ public:
 
     bool login(string email, string login);
 
-    void getMe(const string &email);
-
     void setid();
-    int getid()
-    {
+
+    int getid() {
         return _id;
     }
+
     bool reg();//rejestracja
     void setPassword(string pass) {
         _password = pass;
     }
+
+    bool save();
 
     string getPassword() {
         return _password;

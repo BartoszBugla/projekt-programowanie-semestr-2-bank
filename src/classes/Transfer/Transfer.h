@@ -11,8 +11,6 @@
 class Transfer {
 private:
     float value;
-    //narazie email ale lepiej zeby tu bylo id
-    //from user to user chodzi
     string from;
     string to;
     string msg;
@@ -20,20 +18,23 @@ private:
     string CreatedAt;
     float balanceBefore;
     float balanceAfter;
+    int _id;
 
-    static int calculateLinesInFile() {
+    void generateID() {
+        int lines{};
         string line;
         fstream file;
-        int counter = 0;
-        file.open("baza_uzytkownikow.txt", ios::in);
+        file.open("Transfers.txt", ios::in);
         if (file.is_open()) {
-            while (getline(file, line)) {
-                counter++;
-            }
+            while (getline(file, line))
+                ++lines;
+            file.close();
+        } else {
+            string code = "FILE_NOT_OPENED";
+            throw code;
         }
-        return counter;
+        _id = lines + 1;
     }
-
 
 public:
     Transfer(string from, string to, string msg, float value) {
@@ -42,6 +43,7 @@ public:
         this->msg = msg;
         this->value = value;
     }
+
 
     void setValue(float val) {
         this->value = val;
@@ -59,15 +61,24 @@ public:
         this->to = to;
     }
 
-    friend bool createAndSaveTransfer(const User &user, const Transfer &transfer) {
+
+    friend bool createAndSaveTransfer(User &user, Transfer transfer) {
         fstream file;
         file.open("Transfers.txt", ios::out | ios::app);
-
+        transfer.generateID();
         if (file.is_open()) {
-            file << user.email + " " + transfer.to + " " + transfer.msg + " " + to_string(transfer.value);
+            file << transfer._id << " "
+                 << user.email + " " + transfer.to + " " + transfer.msg + " " + to_string(transfer.value);
             file << +" " + transfer.CreatedAt << user.balance << " " << user.balance - transfer.value
                  << "\n";
             file.close();
+            user.balance -= transfer.value;
+            user.save();
+
+            User *receiver = User::findUserByEmail(transfer.to);
+            receiver->balance += transfer.value;
+            receiver->save();
+
             return true;
         } else
             return false;
