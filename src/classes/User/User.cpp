@@ -12,20 +12,21 @@ bool User::login(string emailCheck, string passwordCheck) {
     fstream file;
     char wybor;
     bool y = false;
-    if(emailCheck=="admin" && passwordCheck=="admin")
-    {
+
+    if (emailCheck == "admin" && passwordCheck == "admin") {
         return true;
-    }
-    else{
+    } else {
         file.open("baza_uzytkownikow.txt", ios::in);
+
         if (file.is_open()) {
+
             while (!file.eof()) {
                 file >> _id >> email >> _password >> name >> secondName;
                 if (emailCheck == email && passwordCheck == _password) {
                     return true;
                 }
             }
-            if (y == false) {
+            if (!y) {
                 cout << "Dane sa nieprawidlowe. Sprobuj ponownie." << endl;
             }
             file.close();
@@ -35,42 +36,22 @@ bool User::login(string emailCheck, string passwordCheck) {
 };
 
 //get user by email
-void User::getMe(const string &byEmail) {
-    string line;
-    fstream file;
-    file.open("baza_uzytkownikow.txt", ios::in);
-    if (file.is_open()) {
-        while (getline(file, line)) {
-            string *arrayOfStrings = splitString(line, " ", 5);
-            if (arrayOfStrings[0] == byEmail) {
-                this->email = arrayOfStrings[0];
-                this->_password = arrayOfStrings[1];
-                this->name = arrayOfStrings[2];
-                this->secondName = arrayOfStrings[3];
-            }
 
-        }
 
-    }
-
-}
-
-void User::setid()
-{
+void User::setid() {
     int lines{};
     string line;
     fstream file;
     file.open("baza_uzytkownikow.txt", ios::in);
-    if(file.is_open()){
-        while(getline(file,line))
+    if (file.is_open()) {
+        while (getline(file, line))
             ++lines;
         file.close();
-    }
-    else {
+    } else {
         string code = "FILE_NOT_OPENED";
         throw code;
     }
-    _id=lines+1;
+    _id = lines + 1;
 
 }
 
@@ -78,8 +59,8 @@ bool User::reg() {
     fstream file;
     file.open("baza_uzytkownikow.txt", ios::out | ios::app);
     if (file.is_open()) {
-        file <<_id;
-        file <<" " + email + " " + _password + " " + name + " " + secondName + "\n";
+        file << _id;
+        file << " " + email + " " + _password + " " + name + " " + secondName + "\n";
         file.close();
         return true;
     } else
@@ -94,11 +75,12 @@ User *User::findUserByEmail(const string &byEmail) {
     if (file.is_open()) {
         while (getline(file, line)) {
             string *arrayOfStrings = splitString(line, " ", 5);
-            if (arrayOfStrings[0] == byEmail) {
-                newUser->email = arrayOfStrings[0];
-                newUser->_password = arrayOfStrings[1];
-                newUser->name = arrayOfStrings[2];
-                newUser->secondName = arrayOfStrings[3];
+            if (arrayOfStrings[1] == byEmail) {
+                newUser->_id = stoi(arrayOfStrings[0]);
+                newUser->email = arrayOfStrings[1];
+                newUser->_password = arrayOfStrings[2];
+                newUser->name = arrayOfStrings[3];
+                newUser->secondName = arrayOfStrings[4];
             }
 
         }

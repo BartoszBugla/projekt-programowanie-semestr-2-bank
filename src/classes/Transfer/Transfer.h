@@ -73,11 +73,11 @@ public:
                  << "\n";
             file.close();
             user.balance -= transfer.value;
-            user.save();
+//            user.save();
 
             User *receiver = User::findUserByEmail(transfer.to);
             receiver->balance += transfer.value;
-            receiver->save();
+//            receiver->save();
 
             return true;
         } else
