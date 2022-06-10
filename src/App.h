@@ -14,6 +14,7 @@
 #include "views/Profile/Profile.h"
 #include "classes/Transfer/Transfer.h"
 #include "views/CreateTransfer/CreateTransfer.h"
+#include "views/adminDashboard/adminDashboard.h"
 
 class App {
 public:

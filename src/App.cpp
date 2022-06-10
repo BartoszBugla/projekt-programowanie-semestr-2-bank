@@ -6,10 +6,11 @@
 
 App::App() {
     View::user = new User();
-    View::screen = reg;
+    View::screen = login;
     Dashboard dashboardScreen = Dashboard();
     Profile profileScreen = Profile();
     CreateTransfer createTransferScreen = CreateTransfer();
+    adminDashboard adminDashboardScreen = adminDashboard();
 
     while (true) {
         switch (View::screen) {
@@ -27,6 +28,9 @@ App::App() {
                 continue;
             case Screen::profile:
                 profileScreen.render();
+                continue;
+            case Screen::AdminDashboard:
+                adminDashboardScreen.render();
                 continue;
             case Screen::leave:
                 //exit

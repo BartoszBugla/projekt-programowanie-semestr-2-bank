@@ -12,19 +12,24 @@ bool User::login(string emailCheck, string passwordCheck) {
     fstream file;
     char wybor;
     bool y = false;
-
-    file.open("baza_uzytkownikow.txt", ios::in);
-    if (file.is_open()) {
-        while (!file.eof()) {
-            file >> email >> _password >> name >> secondName;
-            if (emailCheck == email && passwordCheck == _password) {
-                return true;
+    if(emailCheck=="admin" && passwordCheck=="admin")
+    {
+        return true;
+    }
+    else{
+        file.open("baza_uzytkownikow.txt", ios::in);
+        if (file.is_open()) {
+            while (!file.eof()) {
+                file >> _id >> email >> _password >> name >> secondName;
+                if (emailCheck == email && passwordCheck == _password) {
+                    return true;
+                }
             }
+            if (y == false) {
+                cout << "Dane sa nieprawidlowe. Sprobuj ponownie." << endl;
+            }
+            file.close();
         }
-        if (y == false) {
-            cout << "Dane sa nieprawidlowe. Sprobuj ponownie." << endl;
-        }
-        file.close();
     }
 
 };
@@ -73,8 +78,9 @@ bool User::reg() {
     fstream file;
     file.open("baza_uzytkownikow.txt", ios::out | ios::app);
     if (file.is_open()) {
+        file<<"\n";
         file <<_id;
-        file <<" " + email + " " + _password + " " + name + " " + secondName + "\n";
+        file <<" " + email + " " + _password + " " + name + " " + secondName ;
         file.close();
         return true;
     } else

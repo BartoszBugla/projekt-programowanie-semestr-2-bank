@@ -1,3 +1,6 @@
 1 bartek 123 bartek bugla
 2 michal 123 michal bober
 3 kamil 123 kamil grabowski
+4 1 1 1 1
+5 mail haslo imie nazwisko
+6 mail haslo michal bober
