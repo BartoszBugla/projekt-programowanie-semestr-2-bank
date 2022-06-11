@@ -62,6 +62,7 @@ public:
     }
 
 
+    void changeBalance(User &user,Transfer transfer);
     friend bool createAndSaveTransfer(User &user, Transfer transfer) {
         fstream file;
         file.open("Transfers.txt", ios::out | ios::app);

@@ -99,6 +99,7 @@ void CreateTransfer::render() {
 
                 Transfer newTransfer = Transfer(from, to, msg, float(value));
                 createAndSaveTransfer(*View::user, newTransfer);
+                newTransfer.changeBalance(*View::user, newTransfer);
                 setScreen(dashboard);
                 return;
         }

@@ -21,7 +21,7 @@ bool User::login(string emailCheck, string passwordCheck) {
         if (file.is_open()) {
 
             while (!file.eof()) {
-                file >> _id >> email >> _password >> name >> secondName;
+                file >> _id >> email >> _password >> name >> secondName >> balance;
                 if (emailCheck == email && passwordCheck == _password) {
                     return true;
                 }
@@ -60,7 +60,8 @@ bool User::reg() {
     file.open("baza_uzytkownikow.txt", ios::out | ios::app);
     if (file.is_open()) {
         file << _id;
-        file << " " + email + " " + _password + " " + name + " " + secondName + "\n";
+        file << " " + email + " " + _password + " " + name + " " + secondName + " "
+        <<"500"<<"\n";
         file.close();
         return true;
     } else
@@ -74,13 +75,14 @@ User *User::findUserByEmail(const string &byEmail) {
     file.open("baza_uzytkownikow.txt", ios::in);
     if (file.is_open()) {
         while (getline(file, line)) {
-            string *arrayOfStrings = splitString(line, " ", 5);
+            string *arrayOfStrings = splitString(line, " ", 6);
             if (arrayOfStrings[1] == byEmail) {
                 newUser->_id = stoi(arrayOfStrings[0]);
                 newUser->email = arrayOfStrings[1];
                 newUser->_password = arrayOfStrings[2];
                 newUser->name = arrayOfStrings[3];
                 newUser->secondName = arrayOfStrings[4];
+                newUser->balance = stof(arrayOfStrings[5]);
             }
 
         }
