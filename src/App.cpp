@@ -6,7 +6,7 @@
 
 App::App() {
     View::user = new User();
-    View::screen = login;
+    View::screen = welcomeScreen;
     Dashboard dashboardScreen = Dashboard();
     Profile profileScreen = Profile();
     CreateTransfer createTransferScreen = CreateTransfer();
@@ -31,6 +31,9 @@ App::App() {
                 continue;
             case Screen::AdminDashboard:
                 adminDashboardScreen.render();
+                continue;
+            case Screen::welcomeScreen:
+                dashboardScreen.welcomeScreen();
                 continue;
             case Screen::leave:
                 //exit

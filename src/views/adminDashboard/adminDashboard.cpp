@@ -54,9 +54,10 @@ void adminDashboard::transferData()
             balanceBefore=stof(arrayOfStrings[4]);
             balanceAfter=stof(arrayOfStrings[5]);
             date=arrayOfStrings[6];
-            cout<<"id: "<<id<<", od: "<<from<<", do: "<<to
+            cout<<"id: "<<id <<", od: "<<from<<", do: "<<to
                 <<", opis: "<<msg<<", kwota: "<<value<<", saldo przed: "<<balanceBefore
                 <<", saldo po: "<<balanceAfter<<", data: "<<date<<endl;
+            delete [] arrayOfStrings;
         }
         file.close();
     }

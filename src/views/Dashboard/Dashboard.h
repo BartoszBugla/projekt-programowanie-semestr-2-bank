@@ -21,6 +21,8 @@ public:
     void show();
 
     void setMappedScreen(int);
+
+    void welcomeScreen();
 };
 
 
