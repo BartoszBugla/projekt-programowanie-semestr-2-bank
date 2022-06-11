@@ -9,9 +9,9 @@ void Register::render() {
     User* newUser = new User();
     int correct{};
     while(correct!=1) {
-        cout << "podaj mail\n";
+        cout <<"podaj mail"<<endl;
         newUser->email = input();
-        cout << "podajhaslo\n";
+        cout << "podaj haslo\n";
         newUser->setPassword(input());
         cout << "podaj imie\n";
         newUser->name = input();
@@ -22,7 +22,7 @@ void Register::render() {
         cout << "haslo = " <<newUser->getPassword() << endl;
         cout << "imie = " << newUser->name << endl;
         cout << "nazwisko = " << newUser->secondName << endl;
-        cout << "Czy podano prawidlowe dane? 1-tak/2-nie";
+        cout << "Czy podano prawidlowe dane? 1-tak/2-nie\n";
 
         int correctInput =false;
         while(!correctInput){
@@ -39,9 +39,9 @@ void Register::render() {
     bool registerSuccess = newUser->reg();
 
     if(registerSuccess) {
-        cout<<"Pomyslnie zarejestrowano uzytkownika";
+        cout<<"Pomyslnie zarejestrowano uzytkownika\n";
     }else {
         cout<<"Nie mozna zarejestrowac uzytkownika, spróbuj ponownie pozniej\n";
     }
-    setScreen(login);
+    setScreen(welcomeScreen);
 }

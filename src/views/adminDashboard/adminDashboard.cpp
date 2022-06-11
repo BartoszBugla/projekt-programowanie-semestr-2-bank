@@ -35,6 +35,10 @@ void adminDashboard::userData()
 
 void adminDashboard::transferData()
 {
+    cout<<color("Lista przelewow\n",Color::magenta);
+    for(int i=0;i<40;i++)
+        cout<<color("*", Color::magenta);
+    cout<<endl;
     fstream file;
     int id;
     string line;
@@ -46,18 +50,26 @@ void adminDashboard::transferData()
         while(getline(file,line))
         {
             //bartek prosze spojrz o co chodzi
-            string *arrayOfStrings = splitString(line, ";", 7);
+            string *arrayOfStrings = splitString(line,";", 8);
             id=stoi(arrayOfStrings[0]);
             from=arrayOfStrings[1];
             to=arrayOfStrings[2];
-            value=stof(arrayOfStrings[3]);
-            balanceBefore=stof(arrayOfStrings[4]);
-            balanceAfter=stof(arrayOfStrings[5]);
-            date=arrayOfStrings[6];
-            cout<<"id: "<<id <<", od: "<<from<<", do: "<<to
-                <<", opis: "<<msg<<", kwota: "<<value<<", saldo przed: "<<balanceBefore
-                <<", saldo po: "<<balanceAfter<<", data: "<<date<<endl;
-            delete [] arrayOfStrings;
+            msg=arrayOfStrings[3];
+            value=stof(arrayOfStrings[4]);
+            balanceBefore=stof(arrayOfStrings[5]);
+            balanceAfter=stof(arrayOfStrings[6]);
+            date=arrayOfStrings[7];
+            cout<<color("id: ",Color::green)<<id;
+            cout<<color(", od: ",Color::green) + from;
+            cout<<color(", do: ",Color::green) + to;
+            cout<<color(", wiadomosc: ",Color::green) + msg<<endl;
+            cout<<color("kwota: ",Color::green)<<value;
+            cout<<color(", saldo przed: ",Color::green)<<balanceBefore;
+            cout<<color(", saldo po: ", Color::green)<<balanceAfter;
+            cout<<color(", data: ",Color::green) + date<<endl;
+            for(int i=0;i<40;i++)
+                cout<<color("*", Color::magenta);
+            cout<<endl;
         }
         file.close();
     }
@@ -76,9 +88,15 @@ void adminDashboard::transferData()
 void adminDashboard::render()
 {
     int num;
-    cout<<"Witaj admin\nCo chciałbys sprawdzic"<<endl;
-    cout<<"1. Lista uzytkownikow"<<endl;
+    cout<<"Witaj"<<color(" ADMIN",Color::red)<<endl;
+    for(int i=0;i<40;i++)
+        cout<<color("*", Color::magenta);
+    cout<<"\n1. Lista uzytkownikow"<<endl;
     cout<<"2. Lista przelewow"<<endl;//zalezy jak bedzie wygladalo spisywanie przelewow
+    cout<<"3. Wyloguj sie"<<endl;
+    for(int i=0;i<40;i++)
+        cout<<color("*", Color::magenta);
+    cout<<endl;
     num=inputNum();
     if(num==1)
     {
@@ -87,6 +105,10 @@ void adminDashboard::render()
     else if(num==2)
     {
         transferData();
+    }
+    else if(num==3)
+    {
+        setScreen(welcomeScreen);
     }
 }
 

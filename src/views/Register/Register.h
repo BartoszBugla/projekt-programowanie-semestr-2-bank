@@ -5,7 +5,6 @@
 #ifndef APLIKACJABANKOWA_REGISTER_H
 #define APLIKACJABANKOWA_REGISTER_H
 
-
 #include "../View.h"
 
 class Register: public View{

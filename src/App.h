@@ -7,7 +7,6 @@
 
 #include "classes/User/User.h"
 #include "views/Login/Login.h"
-#include "views/Dashboard/Dashboard.h"
 #include "views/View.h"
 #include "utils/common.h"
 #include "views/Register/Register.h"
@@ -15,6 +14,7 @@
 #include "classes/Transfer/Transfer.h"
 #include "views/CreateTransfer/CreateTransfer.h"
 #include "views/adminDashboard/adminDashboard.h"
+#include "views/Dashboard/Dashboard.h"
 
 class App {
 public:

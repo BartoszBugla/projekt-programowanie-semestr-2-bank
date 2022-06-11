@@ -5,7 +5,6 @@
 #ifndef APLIKACJABANKOWA_DASHBOARD_H
 #define APLIKACJABANKOWA_DASHBOARD_H
 
-
 #include "../View.h"
 #include "../../utils/common.h"
 #include <string>
@@ -16,13 +15,15 @@ public:
     blik blikCode = blik();
     string errorMessage;
 
+    void welcomeScreen();
+
     void render();
 
     void show();
 
     void setMappedScreen(int);
 
-    void welcomeScreen();
+
 };
 
 

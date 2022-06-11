@@ -6,7 +6,6 @@
 #define APLIKACJABANKOWA_ADMINDASHBOARD_H
 
 #include "../View.h"
-#include "../../utils/common.h"
 class adminDashboard:public View{
 public:
     void render();

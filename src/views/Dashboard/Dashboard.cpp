@@ -4,6 +4,8 @@
 
 #include "Dashboard.h"
 
+
+
 void Dashboard::setMappedScreen(int num) {
 
     switch (num) {
@@ -83,7 +85,8 @@ void Dashboard::render() {
 void::Dashboard::welcomeScreen()
 {
     int num;
-    cout<<"Witaj w aplikacji banku"<<endl;
+    cout<<color("Witaj w aplikacji banku", Color::magenta)<<endl;
+
     cout<<"1. rejestracja"<<endl;
     cout<<"2. logowanie"<<endl;
     do
@@ -98,7 +101,6 @@ void::Dashboard::welcomeScreen()
         case 2:
             setScreen(login);
             return;
-
-
     }
 }
+

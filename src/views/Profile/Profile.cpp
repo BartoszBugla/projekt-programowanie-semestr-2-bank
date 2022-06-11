@@ -9,7 +9,6 @@ void Profile::show() {
     for (int i = 0; i < 40; i++) cout << color("*", Color::magenta);
     cout << endl;
     cout << "Cześć " << color(View::user->name, Color::red) << " ";
-    cout << "Twoje Saldo to" << endl;
     for (int i = 0; i < 40; i++) cout << color("*", Color::magenta);
     cout << endl;
     cout << "1. Powrót" << endl;

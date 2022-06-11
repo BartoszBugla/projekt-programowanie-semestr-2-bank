@@ -24,8 +24,10 @@ void Login::render() {
 
     if (email == "admin" && password == "admin") {
        setScreen(Screen::AdminDashboard);
-    } else {
-    user = User::findUserByEmail(email);
-    setScreen(Screen::dashboard);
+    }
+    else
+    {
+        user = User::findUserByEmail(email);
+        setScreen(Screen::dashboard);
    }
 }
