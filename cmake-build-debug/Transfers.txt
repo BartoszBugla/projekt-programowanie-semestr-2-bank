@@ -11,3 +11,6 @@
 11;michal;bartek;test;47.570000;208;160.43;Sun Jun 12 00:45:05 2022
 12;michal;bartek;test;34.000000;208;174;Sun Jun 12 01:28:46 2022
 13;bartek;michal;test;120.000000;826;706;Sun Jun 12 01:29:19 2022
+14;bartek;kamil;asd;100.000000;706;606;Sun Jun 12 15:42:54 2022
+15;bartek;kamil;dupa;20.000000;606;586;Sun Jun 12 15:50:08 2022
+16;bartek;kamil;sdad;100.000000;586;486;Sun Jun 12 15:50:40 2022
