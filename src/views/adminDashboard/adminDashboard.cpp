@@ -15,9 +15,10 @@ void adminDashboard::userData()
     {
         while(!file.eof())
         {
-            file >> id >> email >> password >> name >> secondname;
+            file >> id >> email >> password >> name >> secondname >> balance;
             cout<<"id = "<<id<<", E-mail = "<<email<<", Password = "<<password
-            <<", Name = "<<name<<", Second Name = "<<secondname<<endl;
+            <<", Name = "<<name<<", Second Name = "<<secondname<<"stan konta: "
+            <<balance<<endl;
         }
         file.close();
     }

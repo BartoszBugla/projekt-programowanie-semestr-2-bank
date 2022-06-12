@@ -17,6 +17,7 @@ enum Screen {
     createTransferScreen,
     AdminDashboard,
     welcomeScreen,
+    TransferHistory,
 };
 
 class View {

@@ -38,4 +38,5 @@ void Profile::render() {
         // nie przekieruje na 404
         setScreen(dashboard);
     }
-}
+
+    }
