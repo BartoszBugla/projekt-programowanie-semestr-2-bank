@@ -22,6 +22,8 @@ private:
 public:
     static User *findUserByEmail(const string &email);
 
+    static User *getUsers();
+
     //Trasnfer transfers;
     string email;
     string name;
@@ -32,7 +34,7 @@ public:
 
     bool login(string email, string login);
 
-    void setid();
+    int setid();
 
     int getid() {
         return _id;

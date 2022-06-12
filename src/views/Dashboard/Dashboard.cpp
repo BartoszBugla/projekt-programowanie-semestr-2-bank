@@ -5,7 +5,6 @@
 #include "Dashboard.h"
 
 
-
 void Dashboard::setMappedScreen(int num) {
 
     switch (num) {
@@ -46,11 +45,6 @@ void Dashboard::show() {
 }
 
 void Dashboard::render() {
-    //robocze te getme
-//    if (user->email == "") {
-//        user->getMe("bartek");
-//    }
-
     blikCode.generate_blik();
     Dashboard::show();
     //
@@ -82,17 +76,15 @@ void Dashboard::render() {
     // clean
 }
 
-void::Dashboard::welcomeScreen()
-{
+void Dashboard::welcomeScreen() {
     int num;
-    cout<<color("Witaj w aplikacji banku", Color::magenta)<<endl;
+    cout << color("Witaj w aplikacji banku", Color::magenta) << endl;
 
-    cout<<"1. rejestracja"<<endl;
-    cout<<"2. logowanie"<<endl;
-    do
-    {
-        num=inputNum();
-    }while(num!=1 && num!=2);
+    cout << "1. rejestracja" << endl;
+    cout << "2. logowanie" << endl;
+    do {
+        num = inputNum();
+    } while (num != 1 && num != 2);
 
     switch (num) {
         case 1:

@@ -8,6 +8,32 @@ User::User() {
 
 };
 
+User *User::getUsers() {
+    string line;
+    fstream file;
+    User *newUser = new User();
+    // lines in file
+    int lines = newUser->setid();
+    User *users = new User[lines];
+    int i = 0;
+    file.open("baza_uzytkownikow.txt", ios::in);
+    if (file.is_open()) {
+        while (getline(file, line)) {
+            string *arrayOfStrings = splitString(line, " ", 6);
+
+            users[i]._id = stoi(arrayOfStrings[0]);
+            users[i].email = arrayOfStrings[1];
+            users[i]._password = arrayOfStrings[2];
+            users[i].name = arrayOfStrings[3];
+            users[i].secondName = arrayOfStrings[4];
+            users[i].balance = stof(arrayOfStrings[5]);
+            i++;
+        }
+    }
+    return users;
+
+}
+
 bool User::login(string emailCheck, string passwordCheck) {
     fstream file;
     char wybor;
@@ -38,7 +64,7 @@ bool User::login(string emailCheck, string passwordCheck) {
 //get user by email
 
 
-void User::setid() {
+int User::setid() {
     int lines{};
     string line;
     fstream file;
@@ -52,7 +78,7 @@ void User::setid() {
         throw code;
     }
     _id = lines + 1;
-
+    return _id;
 }
 
 bool User::reg() {
