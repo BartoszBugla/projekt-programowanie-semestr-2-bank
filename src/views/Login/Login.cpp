@@ -9,9 +9,7 @@ void Login::render() {
     //https://stackoverflow.com/questions/33309136/change-color-in-os-x-console-output
     //bo to dziala i na macu i windows (przynajmnije powinno XD)
     bool x = false;
-    //Przydałaby się dynamiczna tablica
     Clear();
-    //string daneEmail[200],danePassword[200],daneImie[200],daneNazwisko[200];
     string email = "";
     string password = "";
     User logowanie;
@@ -23,11 +21,10 @@ void Login::render() {
     } while (!logowanie.login(email, password));
 
     if (email == "admin" && password == "admin") {
-       setScreen(Screen::AdminDashboard);
+        setScreen(Screen::AdminDashboard);
+        return;
     }
-    else
-    {
-        user = User::findUserByEmail(email);
-        setScreen(Screen::dashboard);
-   }
+    user = User::findUserByEmail(email);
+    setScreen(Screen::dashboard);
+
 }

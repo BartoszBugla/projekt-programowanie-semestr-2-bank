@@ -1,0 +1,6 @@
+3;bartek;kamil;dupa;300.000000;500.0;200.0;Fri Jun 10 23:51:19 2022
+2;bartek;kamil;ooo;100.000000;200.0;100.0;Fri Jun 10 23:51:42 2022
+3;bartek;kamil;dupa;200.000000;792;592;Sun Jun 12 12:08:15 2022
+4;bartek;kamil;dupa;200.000000;592;392;Sun Jun 12 12:14:29 2022
+5;bartek;kamil;dupa;200.000000;392;192;Sun Jun 12 12:15:36 2022
+6;bartek;kamil;dupa;50.000000;192;142;Sun Jun 12 12:32:08 2022

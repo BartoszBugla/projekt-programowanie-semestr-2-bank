@@ -61,7 +61,7 @@ bool User::reg() {
     if (file.is_open()) {
         file << _id;
         file << " " + email + " " + _password + " " + name + " " + secondName + " "
-        <<"500"<<"\n";
+             << "500" << "\n";
         file.close();
         return true;
     } else
@@ -96,3 +96,37 @@ User *User::findUserByEmail(const string &byEmail) {
         throw code;
     }
 };
+
+bool User::save() {
+
+    fstream file("baza_uzytkownikow.txt");
+    string line;
+    ofstream newFile("temp.txt");
+    string strTemp;
+    string newFileString;
+
+    if (file.is_open()) {
+        while (getline(file, line)) {
+            string *arrayOfStrings = splitString(line, " ", 1000);
+            if (stoi(arrayOfStrings[0]) == _id) {
+                line = to_string(_id) + " "
+                       + email + " "
+                       + _password + " " +
+                       name + " "
+                       + secondName + " " +
+                       to_string(balance) + "\n";
+                newFileString += line;
+            } else {
+                newFileString += line + "\n";
+            }
+        }
+        newFile << newFileString;
+        file.close();
+        remove("baza_uzytkownikow.txt");
+        rename("temp.txt", "baza_uzytkownikow.txt");
+        newFile.close();
+        return true;
+    } else
+        return false;
+
+}

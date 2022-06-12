@@ -1,4 +1,4 @@
 1 michal 123 michal bober 208
-2 bartek 123 bartek bugla 792
-3 kamil 123 kamil grabowski 500
+2 bartek 123 bartek bugla 142.000000
+3 kamil 123 kamil grabowski 1150.000000
 4 mail haslo mail mail 500
