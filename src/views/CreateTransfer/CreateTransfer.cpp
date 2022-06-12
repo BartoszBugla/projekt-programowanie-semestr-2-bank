@@ -58,17 +58,13 @@ void CreateTransfer::render() {
                         string message = "Nie mozesz wyslac sobie przelewu";
                         throw message;
                     }
-
                     errorMessage = "";
                 } catch (const string &err) {
                     to = "";
                     errorMessage = err;
-
                     if (err == "NOT_FOUND") {
                         errorMessage = "Nie znaleziono uzytkownika z takim emailem";
                     }
-
-
                 }
 
                 continue;
@@ -86,20 +82,20 @@ void CreateTransfer::render() {
                     value = 0;
                     show();
                 }
-
                 continue;
             case 3:
                 cout << "Podaj wiadomosc: ";
                 msg = input();
                 continue;
             case 4:
+                msg = "";
+                value = 0;
+                to = "";
                 setScreen(dashboard);
                 return;
             case 5:
-
                 Transfer newTransfer = Transfer(from, to, msg, float(value));
                 createAndSaveTransfer(*View::user, newTransfer);
-                newTransfer.changeBalance(*View::user, newTransfer);
                 setScreen(dashboard);
                 return;
         }
@@ -107,5 +103,4 @@ void CreateTransfer::render() {
 
 
     //save
-
 }

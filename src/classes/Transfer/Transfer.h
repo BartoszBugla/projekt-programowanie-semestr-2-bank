@@ -62,28 +62,35 @@ public:
     }
 
 
-    void changeBalance(User &user,Transfer transfer);
-    friend bool createAndSaveTransfer(User &user, Transfer transfer) {
+    void changeBalance(User &user, Transfer transfer);
+
+//
+    bool save(const User &user) {
         fstream file;
         file.open("Transfers.txt", ios::out | ios::app);
-        transfer.generateID();
+        this->generateID();
         if (file.is_open()) {
-            file << transfer._id << ";"
-                 << user.email + ";" + transfer.to + ";" + transfer.msg + ";" + to_string(transfer.value);
-            file << +";"<<user.balance << ";" << user.balance - transfer.value<<+";"+ transfer.CreatedAt;
+            file << this->_id << ";"
+                 << user.email + ";" + this->to + ";" + this->msg + ";" + to_string(this->value);
+            file << +";" << user.balance << ";" << user.balance - this->value << +";" + this->CreatedAt;
             file.close();
-            user.balance -= transfer.value;
-//            user.save();
+        }
+    }
 
-            User *receiver = User::findUserByEmail(transfer.to);
-            receiver->balance += transfer.value;
-//            receiver->save();
+    friend bool createAndSaveTransfer(User &user, Transfer transfer) {
+        //transfer
+        transfer.save(user);
 
-            return true;
-        } else
-            return false;
+        // sender
+        user.balance -= transfer.value;
+        user.save();
+
+        //receiver
+        User *receiver = User::findUserByEmail(transfer.to);
+        receiver->balance += transfer.value;
+        receiver->save();
+        return true;
     }
 };
-
 
 #endif //APLIKACJABANKOWA_TRANSFER_H
