@@ -11,7 +11,7 @@ App::App() {
     Profile profileScreen = Profile();
     CreateTransfer createTransferScreen = CreateTransfer();
     adminDashboard adminDashboardScreen = adminDashboard();
-    transferHistory transferHistoryScreen= transferHistory();
+    transferHistory transferHistoryScreen = transferHistory();
 
     while (true) {
         switch (View::screen) {

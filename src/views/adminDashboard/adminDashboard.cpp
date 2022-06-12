@@ -19,7 +19,7 @@ void adminDashboard::userData() {
         i++;
     }
 }
-
+//
 //    int num;
 //    cout << "Lista uzytkownikow banku: " << endl;
 //    fstream file;
@@ -82,7 +82,6 @@ void adminDashboard::transferData() {
     int id;
     string line;
 
-    float value, balanceBefore, balanceAfter;
     string from, to, msg, date;
 
     file.open("Transfers.txt", ios::in);
@@ -94,14 +93,11 @@ void adminDashboard::transferData() {
 
     if (file.is_open()) {
         while (getline(file, line)) {
-
             float value, balanceBefore, balanceAfter;
             string from, to, msg, date;
             file.open("Transfers.txt", ios::in);
             if (file.is_open()) {
                 while (getline(file, line)) {
-
-
                     string *arrayOfStrings = splitString(line, ";", 8);
                     id = stoi(arrayOfStrings[0]);
                     from = arrayOfStrings[1];
@@ -156,4 +152,8 @@ void adminDashboard::render() {
     } else if (num == 3) {
         setScreen(welcomeScreen);
     }
+}
+
+adminDashboard::adminDashboard() {
+
 }
