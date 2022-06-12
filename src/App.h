@@ -15,6 +15,7 @@
 #include "views/CreateTransfer/CreateTransfer.h"
 #include "views/adminDashboard/adminDashboard.h"
 #include "views/Dashboard/Dashboard.h"
+#include"views/transferHistory/transferHistory.h"
 
 class App {
 public:

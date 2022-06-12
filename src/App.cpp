@@ -11,6 +11,7 @@ App::App() {
     Profile profileScreen = Profile();
     CreateTransfer createTransferScreen = CreateTransfer();
     adminDashboard adminDashboardScreen = adminDashboard();
+    transferHistory transferHistoryScreen= transferHistory();
 
     while (true) {
         switch (View::screen) {
@@ -34,6 +35,9 @@ App::App() {
                 continue;
             case Screen::welcomeScreen:
                 dashboardScreen.welcomeScreen();
+                continue;
+            case Screen::TransferHistory:
+                transferHistoryScreen.render();
                 continue;
             case Screen::leave:
                 //exit

@@ -9,7 +9,7 @@ void Dashboard::setMappedScreen(int num) {
 
     switch (num) {
         case 1:
-            setScreen(dashboard);
+            setScreen(TransferHistory);
             return;
         case 2:
             setScreen(profile);
@@ -18,7 +18,7 @@ void Dashboard::setMappedScreen(int num) {
             setScreen(createTransferScreen);
             return;
         case 4:
-            setScreen(leave);
+            welcomeScreen();
             return;
         default:
             setScreen(404);
