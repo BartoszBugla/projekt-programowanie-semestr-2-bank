@@ -24,7 +24,8 @@ public:
 
     static User *getUsers();
 
-    //Trasnfer transfers;
+    static User *login(string email, string login);
+
     string email;
     string name;
     string secondName;
@@ -32,9 +33,13 @@ public:
 
     User();
 
-    bool login(string email, string login);
-
     int setid();
+
+    void setName(string name);
+
+    void setSecondName(string secondName);
+
+    void setEmail(string email);
 
     int getid() {
         return _id;

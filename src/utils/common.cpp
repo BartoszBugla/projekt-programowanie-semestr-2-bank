@@ -18,13 +18,13 @@ void wait(int milliseconds) {
 }
 
 void Clear() {
-    #if defined _WIN32
+#if defined _WIN32
     system("cls");
-    #elif defined (__LINUX__) || defined(__gnu_linux__) || defined(__linux__)
+#elif defined (__LINUX__) || defined(__gnu_linux__) || defined(__linux__)
     system("clear");
-    #elif defined (__APPLE__)
+#elif defined (__APPLE__)
     system("clear");
-    #endif
+#endif
 }
 
 
@@ -41,6 +41,7 @@ int inputNum() {
         string message = "Nic nie podałeś";
         throw message;
     }
+
     for (char i: userInput)
         if (i < '0' || i > '9') {
             string message = "Nie podales liczby";

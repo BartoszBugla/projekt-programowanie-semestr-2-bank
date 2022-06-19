@@ -4,16 +4,23 @@
 
 #ifndef APLIKACJABANKOWA_LOGIN_H
 #define APLIKACJABANKOWA_LOGIN_H
+
 #include <iostream>
 #include "../View.h"
+
 using namespace std;
 
-class Login:public View{
+class Login : public View {
+private:
+    void show();
+
+    string errorMessage;
+    string email;
+    string password;
+
 public:
-    static void render();
-
+    void render();
 };
-
 
 
 #endif //APLIKACJABANKOWA_LOGIN_H

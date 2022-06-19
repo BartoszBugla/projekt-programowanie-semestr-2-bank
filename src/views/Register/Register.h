@@ -7,9 +7,19 @@
 
 #include "../View.h"
 
-class Register: public View{
+class Register : public View {
+private:
+    void show();
+
+    string errorMessage;
+
+    string email, password, secondName, name;
+
+    void validate();
+
 public:
-    static void render();
+    void render();
+
 };
 
 
