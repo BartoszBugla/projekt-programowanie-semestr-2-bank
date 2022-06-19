@@ -8,6 +8,19 @@ User::User() {
 
 };
 
+void User::setName(string name) {
+    this->name = name;
+}
+
+void User::setSecondName(string secondName) {
+    this->secondName = name;
+}
+
+void User::setEmail(string email) {
+    this->email = email;
+}
+
+
 User *User::getUsers() {
     string line;
     fstream file;
@@ -34,31 +47,20 @@ User *User::getUsers() {
 
 }
 
-bool User::login(string emailCheck, string passwordCheck) {
-    fstream file;
-    char wybor;
-    bool y = false;
+User *User::login(string emailCheck, string passwordCheck) {
+    string err;
 
-    if (emailCheck == "admin" && passwordCheck == "admin") {
-        return true;
-    } else {
-        file.open("baza_uzytkownikow.txt", ios::in);
-
-        if (file.is_open()) {
-
-            while (!file.eof()) {
-                file >> _id >> email >> _password >> name >> secondName >> balance;
-                if (emailCheck == email && passwordCheck == _password) {
-                    return true;
-                }
-            }
-            if (!y) {
-                cout << "Dane sa nieprawidlowe. Sprobuj ponownie." << endl;
-            }
-            file.close();
-        }
+    if (emailCheck.empty()) {
+        err = "Pole email nie może być puste";
+        throw err;
     }
-
+    User *user = User::findUserByEmail(emailCheck);
+    if (user->getPassword() == passwordCheck) {
+        return user;
+    } else {
+        err = "Haslo jest nieprawidlowe";
+        throw err;
+    }
 };
 
 //get user by email

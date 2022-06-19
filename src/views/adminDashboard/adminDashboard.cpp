@@ -18,6 +18,11 @@ void adminDashboard::userData() {
         cout << endl;
         i++;
     }
+    int num;
+    cout << "1 aby wyjsc do poprzedniego ekranu" << endl;
+    do {
+        num = inputNum();
+    } while (num != 1);
 }
 
 void adminDashboard::transferData() {
@@ -36,7 +41,7 @@ void adminDashboard::transferData() {
     if (file.is_open()) {
         while (getline(file, line)) {
             float value, balanceBefore, balanceAfter;
-            
+
             string *arrayOfStrings = splitString(line, ";", 8);
             id = stoi(arrayOfStrings[0]);
             from = arrayOfStrings[1];

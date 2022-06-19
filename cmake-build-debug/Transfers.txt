@@ -14,3 +14,5 @@
 14;bartek;kamil;asd;100.000000;706;606;Sun Jun 12 15:42:54 2022
 15;bartek;kamil;dupa;20.000000;606;586;Sun Jun 12 15:50:08 2022
 16;bartek;kamil;sdad;100.000000;586;486;Sun Jun 12 15:50:40 2022
+17;bartek;kamil;dos;200.000000;486;286;Sun Jun 12 16:56:35 2022
+18;bartek;kamil;dupa;100.000000;286;186;Fri Jun 17 15:55:53 2022
