@@ -126,7 +126,6 @@ User *User::findUserByEmail(const string &byEmail) {
 };
 
 bool User::save() {
-
     fstream file("baza_uzytkownikow.txt");
     string line;
     ofstream newFile("temp.txt");
@@ -135,7 +134,7 @@ bool User::save() {
 
     if (file.is_open()) {
         while (getline(file, line)) {
-            string *arrayOfStrings = splitString(line, " ", 1000);
+            string *arrayOfStrings = splitString(line, " ", 10);
             if (stoi(arrayOfStrings[0]) == _id) {
                 line = to_string(_id) + " "
                        + email + " "
@@ -147,6 +146,7 @@ bool User::save() {
             } else {
                 newFileString += line + "\n";
             }
+            delete[] arrayOfStrings;
         }
         newFile << newFileString;
         file.close();

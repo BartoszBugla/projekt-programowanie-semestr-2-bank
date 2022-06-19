@@ -13,10 +13,6 @@ int random(int a, int b) {
     return number(generator);
 }
 
-void wait(int milliseconds) {
-    this_thread::sleep_for(chrono::milliseconds(milliseconds));
-}
-
 void Clear() {
 #if defined _WIN32
     system("cls");

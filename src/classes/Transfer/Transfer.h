@@ -75,12 +75,12 @@ public:
             file << +";" << user.balance << ";" << user.balance - this->value << +";" + this->CreatedAt;
             file.close();
         }
+        return true;
     }
 
     friend bool createAndSaveTransfer(User &user, Transfer transfer) {
         //transfer
         transfer.save(user);
-
         // sender
         user.balance -= transfer.value;
         user.save();

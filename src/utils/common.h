@@ -8,15 +8,12 @@
 #include <string>
 #include <iostream>
 #include <random>
-#include <thread>
 
 using namespace std;
 
 void Clear();
 
 int random(int a, int b);
-
-void wait(int milliseconds);
 
 string input();
 

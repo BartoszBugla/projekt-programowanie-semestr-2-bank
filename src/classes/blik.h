@@ -4,8 +4,8 @@
 
 #ifndef APLIKACJABANKOWA_BLIK_H
 #define APLIKACJABANKOWA_BLIK_H
-using namespace std;
 
+#include "../utils/common.h"
 
 class blik {
 private:
