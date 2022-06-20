@@ -8,6 +8,7 @@
 
 #include "../View.h"
 #include "../../utils/common.h"
+#include <iomanip>
 
 class Profile : public View {
 private:
@@ -15,8 +16,8 @@ private:
 
 public:
     void render();
-
-
+    void currencies();
+    void userInfo();
 };
 
 

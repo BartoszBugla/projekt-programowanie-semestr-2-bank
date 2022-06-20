@@ -54,23 +54,26 @@ void transferHistory::getHistory(User &user) {
             cout << "Nie udalo sie wczytac listy uzytkownikow" << endl;
         }
     int num;
-    cout<<"\n1) Wyjscie do poprzedniego ekranu"<<endl;
+    cout<<"\n1) Wyjscie do ekranu glownego"<<endl;
     cout<<"2) Menu sortowania" << endl;
+    cout<<"3) Ekran profilu"<<endl;
     cout << "Dokonaj wyboru:";
     int wybor,set;
     string opisSort;
     do{
         valid=false;
         cin >> set;
-        if (cin.good() && set>0 && set<3){
+        if (cin.good() && set>0 && set<4){
             valid = true;
         } else {
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(),'\n');
-            cout << "Podaj liczbe z zakresu od 1 do 2." << endl;
+            cout << "Podaj liczbe z zakresu od 1 do 3." << endl;
         }
     } while (!valid);
-    if(set==2) {
+    if(set==3)
+        setScreen(profile);
+    else if(set==2) {
         do {
             cout << "==============" << endl;
             cout << "1) Wzgledem kwoty" << endl;
@@ -371,7 +374,8 @@ void transferHistory::getHistory(User &user) {
             }
         } while (wybor != 7);
     }
-    setScreen(dashboard);
+    else if(set==1)
+        setScreen(dashboard);
     return;
 }
 
