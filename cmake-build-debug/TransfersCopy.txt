@@ -29,3 +29,6 @@
 31;bartek;kamil;a;10;186;176;Sun Jun 19 14:46:11 2022
 32;bartek;kamil;a;10;186;176;Sun Jun 19 14:47:18 2022
 33;bartek;kamil;a;10;186;176;Sun Jun 19 14:48:37 2022
+34;bartek;michal;test;5;164;159;Mon Jun 20 13:29:40 2022
+35;bartek;michal;test;2;159;157;Mon Jun 20 13:31:12 2022
+36;bartek;michal;testprosze;20;111;91;Mon Jun 20 13:52:17 2022

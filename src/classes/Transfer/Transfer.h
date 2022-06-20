@@ -7,7 +7,7 @@
 
 
 #include "../User/User.h"
-
+#include <regex>
 class Transfer {
 private:
     float value;
@@ -16,6 +16,7 @@ private:
     string msg;
     time_t now = time(0);
     string CreatedAt = ctime(&now);
+
     float balanceBefore;
     float balanceAfter;
     int _id;
@@ -79,17 +80,18 @@ public:
     }
 
     friend bool createAndSaveTransfer(User &user, Transfer transfer) {
-        //transfer
-        transfer.save(user);
-        // sender
-        user.balance -= transfer.value;
-        user.save();
-
-        //receiver
-        User *receiver = User::findUserByEmail(transfer.to);
-        receiver->balance += transfer.value;
-        receiver->save();
-        return true;
+        fstream file;
+        transfer.CreatedAt=transfer.CreatedAt=std::regex_replace(transfer.CreatedAt,std::regex("\\r\\n|\\r|\\n"),"");
+        file.open("Transfers.txt", ios::out | ios::app);
+        transfer.generateID();
+        if (file.is_open()) {
+            file <<"\n"<<transfer._id<<";"+user.email + ";" + transfer.to + ";" + transfer.msg + ";" + to_string(transfer.value)
+            <<";" << user.balance << ";" << user.balance - transfer.value<<";"<<transfer.CreatedAt;
+            file.close();
+            user.balance-=transfer.value;
+            return true;
+        } else
+            return false;
     }
 };
 
