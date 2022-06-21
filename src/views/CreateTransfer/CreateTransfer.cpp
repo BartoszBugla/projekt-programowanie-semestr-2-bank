@@ -90,11 +90,11 @@ void CreateTransfer::render() {
                     msg = input();
                     continue;
                 case 4:
+                    to = "";
                     msg = "";
                     value = 0;
-
-                    show();
-                    continue;
+                    setScreen(dashboard);
+                    return;
                 case 5:
                     Transfer newTransfer = Transfer(from, to, msg, float(value));
                     createAndSaveTransfer(*View::user, newTransfer);

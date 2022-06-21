@@ -24,12 +24,19 @@ void Profile::show() {
 void Profile::render() {
 
     show();
-    cout << "Twoj wybór: ";
     int num{};
-    num = inputNum();
-    while (num < 1 || num > 4) {
-        num = inputNum();
+    int correct = false;
+    while (!correct) {
+        try {
+            cout << "Twoj wybor: ";
+            num = inputNum();
+            correct = true;
+            if (num < 1 || num > 4) throw;
+        } catch (string err) {
+            correct = false;
+        }
     }
+
     if (num == 1)
         setScreen(TransferHistory);
     else if (num == 2)
@@ -58,13 +65,17 @@ void Profile::currencies() {
          << endl;
     for (int i = 0; i < 40; i++) cout << color("*", Color::magenta);
     cout << endl;
-    cout << "1.Powrot" << endl;
-    cout << endl;
-    cout << "Twoj wybor: ";
-    num = inputNum();
-    while (num != 1) {
-        cout << "Twoj wybor: ";
-        num = inputNum();
+    bool correct = false;
+    cout << "1. Powrot" << endl;
+    while (!correct) {
+        try {
+            cout << "Twoj wybor: ";
+            num = inputNum();
+            correct = true;
+            if (num != 1) throw;
+        } catch (string err) {
+            correct = false;
+        }
     }
     if (num == 1)
         setScreen(profile);
@@ -84,11 +95,16 @@ void Profile::userInfo() {
     for (int i = 0; i < 40; i++) cout << color("*", Color::magenta);
     cout << endl;
     cout << "1. Powrot" << endl;
-    cout << "Twoj wybor: ";
-    num = inputNum();
-    while (num != 1) {
-        cout << "Twoj wybor: ";
-        num = inputNum();
+    bool correct = false;
+    while (!correct) {
+        try {
+            cout << "Twoj wybor: ";
+            num = inputNum();
+            correct = true;
+            if (num != 1) throw;
+        } catch (string err) {
+            correct = false;
+        }
     }
     if (num == 1)
         setScreen(profile);
