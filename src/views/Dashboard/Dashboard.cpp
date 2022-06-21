@@ -39,6 +39,12 @@ void Dashboard::show() {
     cout << "2.Profil użytkownika" << endl;
     cout << "3.Zrób przelew " << endl;
     cout << "4.Wyloguj sie" << endl;
+    for (int i = 0; i < 40; i++) cout << color("*", Color::cyan);
+    cout << endl;
+    cout << "5. Zdeponuj 1" << endl;
+    cout << "6. Zdeponuj 20" << endl;
+    cout << "7. Zdeponuj 50" << endl;
+    cout << "8. Zdeponuj 100" << endl;
     for (int i = 0; i < 40; i++) cout << color("*", Color::magenta);
     cout << endl;
     !errorMessage.empty() && cout << color(errorMessage, Color::red) << endl;
@@ -52,11 +58,30 @@ void Dashboard::render() {
     int choice;
 
     try {
+        string successMsg = color("Udało ci się zdeponować", Color::green);
         choice = inputNum();
         if (choice == 5) {
-            View::user->balance += 500;
+            View::user->balance += 1;
+            View::user->save();
+            throw successMsg;
         }
-        if (choice > 4 || choice < 1) {
+        if (choice == 6) {
+            View::user->balance += 20;
+            View::user->save();
+            throw successMsg;
+        }
+        if (choice == 7) {
+            View::user->balance += 50;
+            View::user->save();
+            throw successMsg;
+        }
+        if (choice == 8) {
+            View::user->balance += 100;
+            View::user->save();
+            throw successMsg;
+
+        }
+        if (choice > 8 || choice < 1) {
             string e = "Wpisz poprawną liczbę";
             throw e;
         }
@@ -70,10 +95,8 @@ void Dashboard::render() {
     } catch (const string &err) {
         errorMessage = err;
         show();
-        // nie przekieruje na 404
         setScreen(dashboard);
     }
-    // clean
 }
 
 void Dashboard::welcomeScreen() {

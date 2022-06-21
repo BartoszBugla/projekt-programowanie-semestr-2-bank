@@ -38,3 +38,7 @@
 37;bartek;kamil;aa;20;146;126;Tue Jun 21 15:50:14 2022
 38;bartek;michal;200;100;126;26;Tue Jun 21 16:32:06 2022
 39;max;bartek;dsd;50;500;450;Tue Jun 21 17:12:30 2022
+43;bartek;kamil;10;20;76;56;Tue Jun 21 17:25:35 2022
+44;bartek;kamil;a;20;76;56;Tue Jun 21 17:29:42 2022
+45;bartek;kamil;adf;20;76;56;Tue Jun 21 17:31:58 2022
+48;bartek;kamil;a;100;849;749;Tue Jun 21 17:58:31 2022

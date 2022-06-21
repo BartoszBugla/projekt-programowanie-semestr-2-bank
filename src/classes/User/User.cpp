@@ -13,7 +13,7 @@ void User::setName(string name) {
 }
 
 void User::setSecondName(string secondName) {
-    this->secondName = name;
+    this->secondName = secondName;
 }
 
 void User::setEmail(string email) {
@@ -32,7 +32,7 @@ User *User::getUsers() {
     file.open("baza_uzytkownikow.txt", ios::in);
     if (file.is_open()) {
         while (getline(file, line)) {
-            string *arrayOfStrings = splitString(line, " ", 6);
+            string * arrayOfStrings = splitString(line, " ", 6);
 
             users[i]._id = stoi(arrayOfStrings[0]);
             users[i].email = arrayOfStrings[1];
@@ -86,6 +86,7 @@ int User::setid() {
 bool User::reg() {
     fstream file;
     file.open("baza_uzytkownikow.txt", ios::out | ios::app);
+    _id = setid();
     if (file.is_open()) {
         file << _id;
         file << " " + email + " " + _password + " " + name + " " + secondName + " "
@@ -103,7 +104,8 @@ User *User::findUserByEmail(const string &byEmail) {
     file.open("baza_uzytkownikow.txt", ios::in);
     if (file.is_open()) {
         while (getline(file, line)) {
-            string *arrayOfStrings = splitString(line, " ", 6);
+            string * arrayOfStrings = splitString(line, " ", 6);
+            cout << arrayOfStrings[1] << byEmail << endl;
             if (arrayOfStrings[1] == byEmail) {
                 newUser->_id = stoi(arrayOfStrings[0]);
                 newUser->email = arrayOfStrings[1];
@@ -111,14 +113,13 @@ User *User::findUserByEmail(const string &byEmail) {
                 newUser->name = arrayOfStrings[3];
                 newUser->secondName = arrayOfStrings[4];
                 newUser->balance = stof(arrayOfStrings[5]);
+                return newUser;
             }
-
         }
         if (newUser->email.empty()) {
             string code = "NOT_FOUND";
             throw code;
         }
-        return newUser;
     } else {
         string code = "FILE_NOT_OPENED";
         throw code;
@@ -134,7 +135,7 @@ bool User::save() {
 
     if (file.is_open()) {
         while (getline(file, line)) {
-            string *arrayOfStrings = splitString(line, " ", 10);
+            string * arrayOfStrings = splitString(line, " ", 10);
             if (stoi(arrayOfStrings[0]) == _id) {
                 line = to_string(_id) + " "
                        + email + " "

@@ -5,9 +5,11 @@
 
 
 void adminDashboard::userData() {
+    Clear();
     User *users = User::getUsers();
     int i = 0;
-    while (users[i].getid()) {
+    cout << color("id: ", Color::green) << users[0].getid() << endl;
+    while (!users[i].email.empty()) {
         cout << color("id: ", Color::green) << users[i].getid() << endl;
         cout << color("email: ", Color::green) + users[i].email << endl;
         cout << color("imie: ", Color::green) + users[i].name << endl;
@@ -32,7 +34,7 @@ void adminDashboard::transferData() {
     string from, to, msg, date;
     file.open("Transfers.txt", ios::in);
 
-
+    Clear();
     cout << color("Lista przelewow\n", Color::magenta);
     for (int i = 0; i < 40; i++)
         cout << color("*", Color::magenta);
@@ -42,7 +44,7 @@ void adminDashboard::transferData() {
         while (getline(file, line)) {
             float value, balanceBefore, balanceAfter;
 
-            string *arrayOfStrings = splitString(line, ";", 8);
+            string * arrayOfStrings = splitString(line, ";", 8);
             id = stoi(arrayOfStrings[0]);
             from = arrayOfStrings[1];
             to = arrayOfStrings[2];
@@ -68,7 +70,7 @@ void adminDashboard::transferData() {
     } else {
         cout << "Nie udalo sie wczytac listy uzytkownikow" << endl;
     }
-    Clear();
+
     int num;
     cout << "1 aby wyjsc do poprzedniego ekranu" << endl;
     do {
@@ -80,6 +82,7 @@ void adminDashboard::transferData() {
 
 void adminDashboard::render() {
     int num;
+    Clear();
     cout << "Witaj" << color(" ADMIN", Color::red) << endl;
     for (int i = 0; i < 40; i++)
         cout << color("*", Color::magenta);

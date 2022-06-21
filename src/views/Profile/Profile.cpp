@@ -22,7 +22,7 @@ void Profile::show() {
 }
 
 void Profile::render() {
-    
+
     show();
     cout << "Twoj wybór: ";
     int num{};
@@ -38,7 +38,6 @@ void Profile::render() {
         userInfo();
     else if (num == 4)
         setScreen(dashboard);
-
 }
 
 void Profile::currencies() {

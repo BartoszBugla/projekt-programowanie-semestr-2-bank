@@ -16,7 +16,9 @@ private:
 
 public:
     void render();
+
     void currencies();
+
     void userInfo();
 };
 

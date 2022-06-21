@@ -102,7 +102,7 @@ void Register::render() {
                 case 5:
 
                     validate();
-                    newUser->setEmail(password);
+                    newUser->setEmail(email);
                     newUser->setPassword(password);
                     newUser->setSecondName(secondName);
                     newUser->setName(name);
@@ -110,10 +110,12 @@ void Register::render() {
 
                     View::user = User::findUserByEmail(email);
                     setScreen(dashboard);
+
                     email = "";
                     password = "";
                     name = "";
                     secondName = "";
+
                     return;
                 case 6:
                     setScreen(login);
