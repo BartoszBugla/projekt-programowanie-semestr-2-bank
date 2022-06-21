@@ -6,7 +6,7 @@
 
 App::App() {
     View::user = new User();
-    View::screen = login;
+    View::screen = welcomeScreen;
     Dashboard dashboardScreen = Dashboard();
     Profile profileScreen = Profile();
     CreateTransfer createTransferScreen = CreateTransfer();
@@ -46,7 +46,6 @@ App::App() {
                 break;
             default:
                 cout << "podaj ekran na który chcesz przejść 404" << endl;
-                //jak sie poda stringa to sie wypieroli trzeba to potem zabezpieczyć
                 int correct = false;
                 while (!correct) {
                     try {

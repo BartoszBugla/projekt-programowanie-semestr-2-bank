@@ -34,3 +34,10 @@
 34;bartek;michal;test;5.000000;164;159;Mon Jun 20 13:29:40 2022
 35;bartek;michal;test;2.000000;159;157;Mon Jun 20 13:31:12 2022
 36;bartek;michal;testprosze;20.000000;111;91;Mon Jun 20 13:52:17 2022
+34;bartek;kamil;a;10.000000;176;166;Sun Jun 19 14:59:18 2022
+35;bartek;kamil;a;10.000000;166;156;Sun Jun 19 14:59:29 2022
+36;bartek;kamil;a;10.000000;156;146;Tue Jun 21 15:36:19 2022
+37;bartek;kamil;aa;20.000000;146;126;Tue Jun 21 15:50:14 2022
+38;bartek;michal;200;100.000000;126;26;Tue Jun 21 16:32:06 2022
+39;max;bartek;dsd;50.000000;500;450;Tue Jun 21 17:12:30 2022
+
