@@ -94,24 +94,14 @@ void CreateTransfer::render() {
                     value = 0;
 
                     show();
-                }
-                continue;
-            case 3:
-                cout << "Podaj wiadomosc: ";
-                msg = input();
-                continue;
-            case 4:
-                msg = "";
-                value = 0;
-                to = "";
-                setScreen(dashboard);
-                return;
-            case 5:
-                Transfer newTransfer = Transfer(from, to, msg, float(value));
-                createAndSaveTransfer(*View::user, newTransfer);
-                newTransfer.changeBalance(*View::user, newTransfer);
-                setScreen(dashboard);
-                return;
+                    continue;
+                case 5:
+                    Transfer newTransfer = Transfer(from, to, msg, float(value));
+                    createAndSaveTransfer(*View::user, newTransfer);
+                    newTransfer.changeBalance(*View::user, newTransfer);
+                    setScreen(dashboard);
+                    return;
+            }
         } catch (const string &err) {
             errorMessage = err;
         }
