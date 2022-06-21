@@ -110,9 +110,17 @@ void Register::render() {
 
                     View::user = User::findUserByEmail(email);
                     setScreen(dashboard);
+                    email = "";
+                    password = "";
+                    name = "";
+                    secondName = "";
                     return;
                 case 6:
                     setScreen(login);
+                    email = "";
+                    password = "";
+                    name = "";
+                    secondName = "";
                     return;
                 default:
                     err = "Podales zla liczbe.";

@@ -1,6 +1,7 @@
-0 admin admin admin admin 500
-1 michal 123 michal bober 294
-2 bartek 123 bartek bugla 176.000000
+0 max max max  450.000000
+1 michal 123 michal bober 394.000000
+2 bartek 123 bartek bugla 76.000000
 3 kamil 123 kamil grabowski 1020
 4 mail haslo mail mail 500
-5 kamil qwerty kamil grabowski 510.000000
+5 kamil qwerty kamil grabowski 560.000000
+0 max max max  450.000000

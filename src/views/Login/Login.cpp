@@ -24,10 +24,6 @@ void Login::show() {
     cout << "2. Wpisz haslo" << endl;
     cout << color("3. Zaloguj sie", Color::blue) << endl;
     cout << "4. Nie mam konta." << endl;
-//    cout << "5.??? Zapomnialem hasla" << endl;
-    cout << "Szybkie logowanie " << endl;
-    cout << "6.admin " << endl;
-    cout << "7.bartek " << endl;
     for (int i = 0; i < 40; i++)
         cout << color("*", Color::magenta);
     cout << endl;
@@ -63,16 +59,13 @@ void Login::render() {
                     }
                     user = User::login(email, password);
                     setScreen(Screen::dashboard);
+                    email = "";
+                    password = "";
                     return;
                 case 4:
                     setScreen(Screen::reg);
-                    return;
-                case 6:
-                    setScreen(Screen::AdminDashboard);
-                    return;
-                case 7:
-                    user = User::findUserByEmail("bartek");
-                    setScreen(Screen::dashboard);
+                    email = "";
+                    password = "";
                     return;
                 default:
                     return;

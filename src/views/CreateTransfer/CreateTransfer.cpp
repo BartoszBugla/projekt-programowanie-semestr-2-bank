@@ -20,7 +20,7 @@ void CreateTransfer::show() {
     cout << endl;
     cout << "(Ty)Od: " << color(View::user->email, Color::blue) << endl;
     cout << "(1)Do: " << color(to, Color::blue) << endl;
-    cout << "(2)Wartosc przelewu: " << color(to_string(value), Color::blue) << endl;
+    cout << "(2)Wartosc przelewu w PLN: " << color(to_string(int(value)), Color::blue) << endl;
     cout << "(3)Wiadmomosc: " << color(msg, Color::blue) << endl;
     for (int i = 0; i < 40; i++) cout << color("*", Color::magenta);
     cout << endl;
@@ -29,7 +29,7 @@ void CreateTransfer::show() {
     cout << "Uzupelnij formularz" << endl;
     cout << "1.Wprowadz odbiorce" << endl;
     cout << "2.Wprowadz wartosc" << endl;
-    cout << "3.Wprowadz wiadmosc" << endl;
+    cout << "3.Wprowadz wiadomosc" << endl;
     cout << "4.Wyjdz bez zapisu" << endl;
     isValid && cout << "5. wyslij przelew" << endl;
 
@@ -44,60 +44,65 @@ void CreateTransfer::render() {
 
         cout << endl;
         cout << "Twoj wybor: ";
-        int choice = inputNum();
+        try {
+            int choice = inputNum();
+            errorMessage = "";
 
-        switch (choice) {
+            switch (choice) {
 
-            case 1:
-                cout << "Podaj Odbiorce: ";
-                to = input();
-                //check
-                try {
-                    User::findUserByEmail(to);
-                    if (View::user->email == to) {
-                        string message = "Nie mozesz wyslac sobie przelewu";
-                        throw message;
+                case 1:
+                    cout << "Podaj Odbiorce: ";
+                    to = input();
+                    //check
+                    try {
+                        User::findUserByEmail(to);
+                        if (View::user->email == to) {
+                            string message = "Nie możesz wysłac sobie przelewu";
+                            throw message;
+                        }
+                        errorMessage = "";
+                    } catch (const string &err) {
+                        to = "";
+                        errorMessage = err;
+                        if (err == "NOT_FOUND") {
+                            errorMessage = "Nie znaleziono użytkownika z takim emailem";
+                        }
                     }
-                    errorMessage = "";
-                } catch (const string &err) {
-                    to = "";
-                    errorMessage = err;
-                    if (err == "NOT_FOUND") {
-                        errorMessage = "Nie znaleziono uzytkownika z takim emailem";
-                    }
-                }
 
-                continue;
-            case 2:
-                try {
-                    cout << "Podaj ile chcesz przelać: ";
-                    value = inputNum();
-                    if (View::user->balance < value) {
-                        string e = "Brak wystarczjacych srodkow";
-                        throw e;
+                    continue;
+                case 2:
+                    try {
+                        cout << "Podaj ile chcesz przelać: ";
+                        value = inputNum();
+                        if (View::user->balance < value) {
+                            string e = "Brak wystarczających środków";
+                            throw e;
+                        }
+                        errorMessage = "";
+                    } catch (const string &err) {
+                        errorMessage = err;
+                        value = 0;
+                        show();
                     }
-                    errorMessage = "";
-                } catch (const string &err) {
-                    errorMessage = err;
+                    continue;
+                case 3:
+                    cout << "Podaj wiadomosc: ";
+                    msg = input();
+                    continue;
+                case 4:
+                    msg = "";
                     value = 0;
-                    show();
-                }
-                continue;
-            case 3:
-                cout << "Podaj wiadomosc: ";
-                msg = input();
-                continue;
-            case 4:
-                msg = "";
-                value = 0;
-                to = "";
-                setScreen(dashboard);
-                return;
-            case 5:
-                Transfer newTransfer = Transfer(from, to, msg, float(value));
-                createAndSaveTransfer(*View::user, newTransfer);
-                setScreen(dashboard);
-                return;
+                    to = "";
+                    setScreen(dashboard);
+                    return;
+                case 5:
+                    Transfer newTransfer = Transfer(from, to, msg, float(value));
+                    createAndSaveTransfer(*View::user, newTransfer);
+                    setScreen(dashboard);
+                    return;
+            }
+        } catch (const string &err) {
+            errorMessage = err;
         }
     }
 
